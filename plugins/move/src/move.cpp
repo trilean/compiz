@@ -800,6 +800,11 @@ MoveScreen::getMovingRectangle (BoxPtr pBox)
     int wWidth  = w->geometry ().widthIncBorders () + w->border ().left + w->border ().right;
     int wHeight = w->geometry ().heightIncBorders () + w->border ().top + w->border ().bottom;
 
+    wX += w->clientFrame ().left;
+    wY += w->clientFrame ().top;
+    wWidth -= w->clientFrame ().left + w->clientFrame ().right;
+    wHeight -= w->clientFrame ().top + w->clientFrame ().bottom;
+
     pBox->x1 = wX + ms->rectX;
     pBox->y1 = wY + ms->rectY;
 
