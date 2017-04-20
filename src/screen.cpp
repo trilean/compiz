@@ -2589,6 +2589,7 @@ CompScreenImpl::_addSupportedAtoms (std::vector<Atom> &atoms)
 
     atoms.push_back (Atoms::wmUserTime);
     atoms.push_back (Atoms::frameExtents);
+    atoms.push_back (Atoms::frameGtkExtents);
     atoms.push_back (Atoms::frameWindow);
 
     atoms.push_back (Atoms::winState);
