@@ -376,6 +376,10 @@ moveHandleMotionEvent (CompScreen *s,
 		    int width	   = wWidth + w->border ().left + w->border ().right;
 		    int height	   = w->border ().top ? w->border ().top : 1;
 
+		    x += w->clientFrame ().left;
+		    y += w->clientFrame ().top;
+		    width -= w->clientFrame ().left + w->clientFrame ().right;
+
 		    int status = XRectInRegion (ms->region, x, y,
 						(unsigned int) width,
 						(unsigned int) height);
@@ -395,7 +399,7 @@ moveHandleMotionEvent (CompScreen *s,
 			    if (xStatus != RectangleIn)
 				dx += (dx < 0) ? 1 : -1;
 
-			    x = wX + dx - w->border ().left;
+			    x = wX + dx - w->border ().left + w->clientFrame ().left;
 			}
 
 			while (dy && status != RectangleIn)
@@ -408,7 +412,7 @@ moveHandleMotionEvent (CompScreen *s,
 			    if (status != RectangleIn)
 				dy += (dy < 0) ? 1 : -1;
 
-			    y = wY + dy - w->border ().top;
+			    y = wY + dy - w->border ().top + w->clientFrame ().top;
 			}
 		    }
 		    else
