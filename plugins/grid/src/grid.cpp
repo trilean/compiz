@@ -377,10 +377,10 @@ GridScreen::initiateCommon (CompAction          *action,
 	    desiredRect = constrainSize (cw, desiredSlot);
 	}
 
-	xwc.x = desiredRect.x ();
-	xwc.y = desiredRect.y ();
-	xwc.width  = desiredRect.width ();
-	xwc.height = desiredRect.height ();
+	xwc.x = desiredRect.x () - cw->clientFrame().left;
+	xwc.y = desiredRect.y () - cw->clientFrame().top;
+	xwc.width  = desiredRect.width () + cw->clientFrame().left + cw->clientFrame().right;
+	xwc.height = desiredRect.height () + cw->clientFrame().top + cw->clientFrame().bottom;
 
 	/* Store a copy of xwc since configureXWindow changes it's values */
 	XWindowChanges wc = xwc;
