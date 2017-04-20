@@ -113,6 +113,11 @@ class CompWindowImpl : public CompWindowInterface
 	    return mImpl->output ();
 	}
 
+	virtual const CompWindowExtents & clientFrame () const
+	{
+	    return mImpl->clientFrame ();
+	}
+
 	virtual bool constrainNewWindowSize (int width,
 					     int height,
 					     int *newWidth,

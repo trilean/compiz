@@ -53,6 +53,7 @@ class CompWindowInterface
 	virtual const CompWindow::Geometry & serverGeometry () const = 0;
 	virtual const CompWindowExtents & border () const = 0;
 	virtual const CompWindowExtents & output () const = 0;
+	virtual const CompWindowExtents & clientFrame () const = 0;
 	virtual bool constrainNewWindowSize (int width,
 					     int height,
 					     int *newWidth,

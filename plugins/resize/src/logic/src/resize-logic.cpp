@@ -640,11 +640,17 @@ ResizeLogic::getPaintRectangle (BoxPtr pBox)
     pBox->x2 = geometry.x + geometry.width +
 	       w->serverGeometry ().border () * 2 + w->border ().right;
 
+    pBox->x1 += w->clientFrame ().left;
+    pBox->y1 += w->clientFrame ().top;
+    pBox->x2 -= w->clientFrame ().right;
+
     if (w->shaded ())
 	pBox->y2 = geometry.y + w->size ().height () + w->border ().bottom;
     else
 	pBox->y2 = geometry.y + geometry.height +
 		   w->serverGeometry ().border () * 2 + w->border ().bottom;
+
+    pBox->y2 -= w->clientFrame ().bottom;
 }
 
 void
